@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: d1305129-3710-4e56-abde-014150717f68
+      url: 'https://quartopub.com/sites/dataviz/me'

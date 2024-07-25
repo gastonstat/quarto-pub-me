@@ -1,0 +1,20 @@
+{
+  "resume.qmd": {
+    "resume.html": "e54d41d6"
+  },
+  "index.qmd": {
+    "index.html": "9dab714e"
+  },
+  "slides/slides-abc.qmd": {
+    "slides-abc.html": "d70ff152"
+  },
+  "about.qmd": {
+    "about.html": "2f9b60e9"
+  },
+  "notes/notes-analysis.qmd": {
+    "notes-analysis.html": "36874fc5"
+  },
+  "report/report-enrollment.qmd": {
+    "report-enrollment.html": "91f20b3e"
+  }
+}

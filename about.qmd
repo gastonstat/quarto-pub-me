@@ -1,0 +1,27 @@
+---
+title: "About"
+---
+
+I am originally from ABC.
+
+I studied _Major XYZ_ because I loved X, Y, and Z.
+
+On a my spare free time I like to read _genre ABC_ books, and watch series about
+_DEF_. I also like to bake & bike.
+
+One of my favorite quotes is:
+
+> "I may not have gone where I intended to go, 
+> but I think I have ended up where I needed to be".
+>
+> Douglas Adams, _The Long Dark Tea-Time of the Soul_
+
+
+One of my favorite poems is <a href="https://www.poetryfoundation.org/poems/51296/ithaka-56d22eef917ec" target="_blank">Ithaka</a> by Constantine P. Cavafy. But I also like the poems
+by <a href="https://es.wikipedia.org/wiki/C%C3%A9sar_Vallejo" target="_blank">Cesar Vallejo</a>.
+
+Have I mentioned that I love PB&J?
+
+My favorite colors are `#FF0000` and `#FFFFFF`.
+
+Last but not least ...

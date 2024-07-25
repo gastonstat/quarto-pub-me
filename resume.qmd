@@ -1,0 +1,59 @@
+---
+title: "Resume"
+---
+
+## Education
+
+__University of California, Berkeley__ <br>
+Bachelor in _Major XYZ_ (2023)
+
+Relevant coursework: Financial Economics, Asset Pricing and Portfolio Choice, 
+Data Science for Economists.
+
+
+## Experience
+
+__Academic Intern__, UC Berkeley Data Science Department.
+
+__Operations Fellow__, Berkeley Student Food Collective.
+
+
+
+## Projects
+
+__Investment Calculator__ <br>
+Used a shiny webapp to create a calculator that simulates investing in an index 
+fund over a certain period of time, assuming a variable rate of return.
+<https://fakeuser.shinyapps.io/shinyapp1>
+
+__Text Mining App__ <br>
+Used a shiny webapp to perform a sentiment analysis on text data from a given
+source.
+<https://fakeuser.shinyapps.io/shinyapp3>
+
+
+
+## Awards
+
+- Award 1
+
+- Award 2
+
+- Award 3
+
+
+
+## Skills
+
+- Python
+
+- R
+
+- SQL
+
+- Canva
+
+- _ETC_
+
+- Language: Proficient in English, Spanish
+

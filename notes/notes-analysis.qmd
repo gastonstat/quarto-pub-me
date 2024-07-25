@@ -1,0 +1,144 @@
+---
+title: "Price of Eggs"
+format: 
+  html:
+    toc: true
+    number-sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE)
+```
+
+
+```{r message = FALSE}
+library(tidyverse)  # ecosystem of data science packages
+library(lubridate)  # for working with dates
+```
+
+
+
+# Source: NYT
+
+The data visualization of this report is based on the following article 
+(by Ashley Wu) of The New York Times (Feb 3, 2023):
+
+__Why Eggs Cost So Much__
+
+<https://www.nytimes.com/2023/02/03/briefing/why-eggs-cost-so-much.html>
+
+
+::: {.callout-note icon=false}
+## Note
+
+We are assuming that you have read the article cited above.
+:::
+
+
+
+# Data
+
+The data behind the NYT article comes from one of the databases of the 
+_US Bureau of Labor Statistics_ (BLS), namely, the
+_Consumer Price Index Average Price Data_.
+
+Specifically, the time series data is in the following link: 
+<https://data.bls.gov/timeseries/APU0000708111>
+
+- __Series Id__:	APU0000708111
+- __Series Title__:	Eggs, grade A, large, per doz. in U.S. city average, average price, not seasonally adjusted
+- __Area__:	U.S. city average
+- __Item__:	Eggs, grade A, large, per doz.
+
+
+## Data File
+
+The data is in the text file `"price-of-eggs-timeseries.txt"` available
+in the following link:
+
+[price-of-eggs-timeseries.txt](price-of-eggs-timeseries.txt)
+
+
+Assuming that you have this file in your working directory, you can import it as follows:
+
+```{r}
+tbl = read_csv(
+  file = "price-of-eggs-timeseries.txt", 
+  col_types = cols(
+    Year = col_double(),
+    Jan = col_double(),
+    Feb = col_double(),
+    Mar = col_double(),
+    Apr = col_double(),
+    May = col_double(),
+    Jun = col_double(),
+    Jul = col_double(),
+    Aug = col_double(),
+    Sep = col_double(),
+    Oct = col_double(),
+    Nov = col_double(),
+    Dec = col_double())
+)
+
+head(tbl)
+```
+
+
+## Data Preparation
+
+For `ggplot` convenience, it's better if we pivot the table to __long__ or
+__tall__ format so that we only work with 3 variables or columns: 
+`Year`, `Month`, and `Price`:
+
+```{r}
+# Pivot to longer format
+dat = pivot_longer(
+  data = tbl, 
+  cols = Jan:Dec,      # columns to be pivoted
+  names_to = "Month",  # name of column with categorical values
+  values_to = "Price") # name of column with numeric values
+
+head(dat)
+```
+
+Since we are working with time series data, we also need to add a `Date` column 
+with dates:
+
+```{r}
+# add date column
+dat = dat |>
+  mutate(Date = as.Date(paste0(Year, "-", Month, "-01"), "%Y-%b-%d"))
+
+head(dat)
+```
+
+
+-----
+
+
+# Graph: Timeline
+
+Keep in mind that the timeline of the NYT article goes from Jan-2000 to Dec-2022.
+In our case, we have a few more data points (12 months of 2023).
+
+
+```{r}
+# replicated graphic
+ggplot(data = dat, aes(x = Date, y = Price)) +
+  geom_hline(yintercept = 0:5, color = "gray90") +
+  geom_line(color = "orange", linewidth = 0.8)  +
+  geom_point(x = as.Date("2023-01-01"), y = 4.823, color = "orange") +
+  scale_x_date(breaks = as.Date(paste0(seq(2000, 2024, by = 5), "-01-01"), "%Y-%m-%d")) +
+  scale_y_continuous(breaks = 0:5, labels = paste0("$", 0:5)) +
+  annotate(geom = "text", x = as.Date("2022-12-31"), y = 5.3, 
+           label = "Jan-2023", hjust = 1, color = "gray70", size = 3.5) + 
+  annotate(geom = "text", x = as.Date("2023-01-01"), y = 5, 
+           label = "$4.823", hjust = 1, fontface = 2, size = 3.5) + 
+  theme(axis.line = element_blank(),
+        panel.background = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "Monthly average price of a dozen eggs",
+       x = "",
+       y = "")
+```
+
